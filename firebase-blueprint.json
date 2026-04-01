@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile data including role and basic info",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nombre": { "type": "string" },
+        "apellido": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "trainer", "client"] },
+        "email": { "type": "string", "format": "email" }
+      },
+      "required": ["id", "nombre", "apellido", "role", "email"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "A class or personal training reservation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "enum": ["sala", "pt", "group"] },
+        "day": { "type": "string" },
+        "time": { "type": "string" },
+        "nombre": { "type": "string" },
+        "apellido": { "type": "string" },
+        "role": { "type": "string" },
+        "userId": { "type": "string" },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["type", "day", "time", "nombre", "apellido", "userId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents"
+    },
+    "/agenda/{bookingId}": {
+      "schema": "Booking",
+      "description": "Agenda bookings and classes"
+    }
+  }
+}
