@@ -1,0 +1,8 @@
+{
+  "appId": "com.akrosport.app",
+  "appName": "AKROSPORT",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
