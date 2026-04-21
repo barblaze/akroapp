@@ -23,143 +23,649 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23c8ff00'/%3E%3Ctext y='.9em' x='.1em' font-size='70' font-weight='bold' fill='%23050505'%3EA%3C/text%3E%3C/svg%3E" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+      *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       :root {
         --lime: #c8ff00;
-        --void: #0a0a0a;
-        --surface: #141414;
+        --lime-dim: #a3d900;
+        --void: #050505;
+        --surface: #0f0f0f;
+        --surface-elevated: #1a1a1a;
         --text: #ffffff;
-        --text-dim: #666666;
+        --text-dim: #888888;
+        --gradient-lime: linear-gradient(135deg, #c8ff00 0%, #8aff00 100%);
       }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
         background: var(--void);
         color: var(--text);
         min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        overflow-x: hidden;
+        line-height: 1.6;
       }
-      .container {
-        text-align: center;
-        padding: 2rem;
-        max-width: 500px;
+
+      /* Animated Background */
+      .bg-effects {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
       }
-      .logo {
-        width: 80px;
-        height: 80px;
+
+      .bg-gradient {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.15;
+        animation: float 20s ease-in-out infinite;
+      }
+
+      .bg-gradient-1 {
+        top: -200px;
+        left: -200px;
         background: var(--lime);
-        border-radius: 20px;
+      }
+
+      .bg-gradient-2 {
+        bottom: -200px;
+        right: -200px;
+        background: #00ff88;
+        animation-delay: -10s;
+      }
+
+      .bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: 
+          linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(50px, 30px) scale(1.1); }
+        66% { transform: translate(-30px, 50px) scale(0.9); }
+      }
+
+      /* Main Container */
+      main {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 2rem;
+        animation: fadeInDown 0.8s ease-out;
+      }
+
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .logo-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--gradient-lime);
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 2rem;
-        transform: rotate(12deg);
+        transform: rotate(8deg);
+        box-shadow: 0 4px 20px rgba(200, 255, 0, 0.3);
+        transition: transform 0.3s ease;
       }
-      .logo span {
-        font-size: 2.5rem;
+
+      .logo-icon:hover {
+        transform: rotate(0deg) scale(1.05);
+      }
+
+      .logo-icon span {
+        font-size: 1.5rem;
         font-weight: 900;
         color: var(--void);
-        transform: rotate(-12deg);
+        transform: rotate(-8deg);
       }
-      h1 {
-        font-size: 2.5rem;
-        font-weight: 900;
-        letter-spacing: -0.05em;
-        margin-bottom: 0.5rem;
+
+      .logo-text {
+        font-weight: 800;
+        font-size: 1.25rem;
+        letter-spacing: -0.02em;
       }
-      h1 span { color: var(--lime); }
-      .tagline {
-        font-size: 0.75rem;
-        color: var(--text-dim);
-        text-transform: uppercase;
-        letter-spacing: 0.3em;
-        margin-bottom: 3rem;
+
+      .logo-text span {
+        color: var(--lime);
       }
-      .status {
-        background: var(--surface);
-        border: 1px solid #333;
-        border-radius: 1rem;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
-      .status-dot {
-        width: 10px;
-        height: 10px;
-        background: var(--lime);
-        border-radius: 50%;
-        display: inline-block;
-        margin-right: 0.5rem;
-        box-shadow: 0 0 10px var(--lime);
-      }
-      .status-text {
-        font-size: 0.875rem;
-        color: var(--text-dim);
-      }
-      .links {
+
+      /* Hero Section */
+      .hero {
+        flex: 1;
         display: flex;
-        gap: 1rem;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        min-height: 70vh;
       }
-      .btn {
+
+      .hero-content {
+        max-width: 600px;
+        animation: fadeInUp 1s ease-out 0.2s both;
+      }
+
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .badge {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.875rem 1.5rem;
-        border-radius: 0.75rem;
-        text-decoration: none;
-        font-size: 0.875rem;
+        background: rgba(200, 255, 0, 0.1);
+        border: 1px solid rgba(200, 255, 0, 0.3);
+        padding: 0.5rem 1rem;
+        border-radius: 100px;
+        font-size: 0.75rem;
         font-weight: 600;
-        transition: all 0.2s;
+        color: var(--lime);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1.5rem;
+        animation: pulse 2s ease-in-out infinite;
       }
-      .btn-primary {
+
+      @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(200, 255, 0, 0.4); }
+        50% { box-shadow: 0 0 0 10px rgba(200, 255, 0, 0); }
+      }
+
+      .badge::before {
+        content: '';
+        width: 8px;
+        height: 8px;
         background: var(--lime);
-        color: var(--void);
+        border-radius: 50%;
+        animation: blink 1s ease-in-out infinite;
       }
-      .btn-primary:hover { filter: brightness(1.1); }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+
+      h1 {
+        font-size: clamp(3rem, 10vw, 5rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+
+      h1 .highlight {
+        background: var(--gradient-lime);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+        animation: shimmer 3s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0%, 100% { filter: brightness(1); }
+        50% { filter: brightness(1.2); }
+      }
+
+      .tagline {
+        font-size: 1.125rem;
+        color: var(--text-dim);
+        margin-bottom: 3rem;
+        font-weight: 400;
+      }
+
+      /* Status Card */
+      .status-card {
+        background: var(--surface);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        padding: 2rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 1s ease-out 0.4s both;
+        transition: all 0.3s ease;
+      }
+
+      .status-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gradient-lime);
+      }
+
+      .status-card:hover {
+        border-color: rgba(200, 255, 0, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .status-icon {
+        width: 56px;
+        height: 56px;
+        background: rgba(200, 255, 0, 0.1);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+      }
+
+      .status-icon svg {
+        width: 28px;
+        height: 28px;
+        stroke: var(--lime);
+      }
+
+      .status-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .status-text {
+        color: var(--text-dim);
+        font-size: 0.9rem;
+      }
+
+      /* Services Grid */
+      .services {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+        animation: fadeInUp 1s ease-out 0.6s both;
+      }
+
+      .service-card {
+        background: var(--surface);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 16px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .service-card:hover {
+        background: var(--surface-elevated);
+        border-color: rgba(200, 255, 0, 0.2);
+        transform: translateY(-4px);
+      }
+
+      .service-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .service-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .service-price {
+        color: var(--lime);
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+
+      /* Action Buttons */
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        animation: fadeInUp 1s ease-out 0.8s both;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 1rem 2rem;
+        border-radius: 16px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        cursor: pointer;
+        min-width: 180px;
+      }
+
+      .btn-primary {
+        background: var(--gradient-lime);
+        color: var(--void);
+        box-shadow: 0 4px 20px rgba(200, 255, 0, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 30px rgba(200, 255, 0, 0.4);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0) scale(0.98);
+      }
+
       .btn-secondary {
-        background: transparent;
-        border: 1px solid #333;
+        background: var(--surface);
+        border: 1px solid rgba(255,255,255,0.1);
         color: var(--text);
       }
-      .btn-secondary:hover { border-color: var(--lime); }
-      .contact {
-        margin-top: 2rem;
-        font-size: 0.75rem;
-        color: var(--text-dim);
+
+      .btn-secondary:hover {
+        border-color: var(--lime);
+        background: var(--surface-elevated);
       }
-      .contact a {
+
+      .btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Contact Info */
+      .contact-bar {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        flex-wrap: wrap;
+        animation: fadeInUp 1s ease-out 1s both;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-dim);
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .contact-item:hover {
+        color: var(--lime);
+      }
+
+      .contact-item svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-dim);
+        font-size: 0.75rem;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        animation: fadeInUp 1s ease-out 1.2s both;
+      }
+
+      footer a {
         color: var(--lime);
         text-decoration: none;
+      }
+
+      /* Mobile Adjustments */
+      @media (max-width: 640px) {
+        header {
+          padding: 1rem;
+        }
+
+        .logo-icon {
+          width: 38px;
+          height: 38px;
+        }
+
+        .logo-icon span {
+          font-size: 1.25rem;
+        }
+
+        .hero {
+          padding: 1rem;
+        }
+
+        .status-card {
+          padding: 1.5rem;
+        }
+
+        .services {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .actions {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .contact-bar {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: center;
+        }
+      }
+
+      /* Loading State */
+      .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(0,0,0,0.2);
+        border-top-color: var(--void);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="logo">
-        <span>A</span>
-      </div>
-      <h1>AKRO<span>SPORT</span></h1>
-      <p class="tagline">Performance Lab</p>
-
-      <div class="status">
-        <span class="status-dot"></span>
-        <span class="status-text">Proximamente: App de reservas</span>
-      </div>
-
-      <div class="links">
-        <a href="https://wa.me/56956802641" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-          WhatsApp
-        </a>
-        <a href="https://instagram.com/akrosport_" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-          Instagram
-        </a>
-      </div>
-
-      <p class="contact">
-        <a href="mailto:contacto@akrosport.cl">contacto@akrosport.cl</a>
-      </p>
+    <!-- Background Effects -->
+    <div class="bg-effects">
+      <div class="bg-gradient bg-gradient-1"></div>
+      <div class="bg-gradient bg-gradient-2"></div>
+      <div class="bg-grid"></div>
     </div>
+
+    <main>
+      <!-- Header -->
+      <header>
+        <div class="logo">
+          <div class="logo-icon">
+            <span>A</span>
+          </div>
+          <div class="logo-text">AKRO<span>SPORT</span></div>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <!-- Badge -->
+          <div class="badge">
+            Proximamente
+          </div>
+
+          <!-- Title -->
+          <h1>
+            Transforma tu<br>
+            <span class="highlight">Potencial</span>
+          </h1>
+
+          <p class="tagline">
+            El laboratorio de rendimiento mÃ¡s avanzado de Chile.<br>
+            Donde la excelencia se vuelveä¹ æƒ¯ancia.
+          </p>
+
+          <!-- Status Card -->
+          <div class="status-card">
+            <div class="status-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+              </svg>
+            </div>
+            <h3 class="status-title">App de Reservas</h3>
+            <p class="status-text">Gestiona tus entrenoos, clases y sesiones de PT<br>desde tu celular. proximamente disponible.</p>
+          </div>
+
+          <!-- Services Preview -->
+          <div class="services">
+            <div class="service-card">
+              <div class="service-icon">ðŸ‹ï¸</div>
+              <div class="service-name">Sala de MusculaciÃ³n</div>
+              <div class="service-price">Desde .000</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">ðŸ’ª</div>
+              <div class="service-name">Personal Training</div>
+              <div class="service-price">Desde .000</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">ðŸ‘¥</div>
+              <div class="service-name">Clases Grupales</div>
+              <div class="service-price">Incluido</div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="actions">
+            <a href="https://wa.me/56956802641?text=Hola,%20quiero%20mÃ¡s%20info%20de%20AKROSPORT" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.005l-1.414 4.142 4.341-1.14c1.404.767 3.003 1.173 4.735 1.173 5.523 0 10-4.477 10-10S17.523 2 12 2zm-2 15l-2-2 6-6-6-6 2-2 8 8-8 8z"/>
+              </svg>
+              Escribenos
+            </a>
+            <a href="https://instagram.com/akrosport_" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Bar -->
+      <div class="contact-bar">
+        <a href="tel:+56956802641" class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          +56 9 5680 2641
+        </a>
+        <a href="mailto:contacto@akrosport.cl" class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+          contacto@akrosport.cl
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <p>Â© 2026 AKROSPORT. <span style="color: var(--lime);">Performance Lab Chile.</span></p>
+      </footer>
+    </main>
+
+    <script>
+      // Add smooth scroll behavior
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // Add parallax effect to background
+      document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        
+        document.querySelectorAll('.bg-gradient').forEach((el, index) => {
+          const direction = index === 0 ? 1 : -1;
+          el.style.transform = 	ranslate(px, px);
+        });
+      });
+
+      // Add intersection observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.service-card').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = ll 0.5s ease s;
+        observer.observe(card);
+      });
+    </script>
   </body>
 </html>
