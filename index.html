@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKROSPORT | Entrena al MÃ¡ximo</title>
-    <meta name="description" content="El mejor gimnasio de Santiago. Entrena al mÃ¡ximo con planes diseÃ±ados para todos los niveles. Fuerza, agilidad y resistencia con profesionales certificados.">
+    <title>AKROSPORT | Los Andes - Entrena al MÃ¡ximo</title>
+    <meta name="description" content="AKROSPORT - El mejor gimnasio de Los Andes. Entrena al mÃ¡ximo con planes diseÃ±ados para todos los niveles. Fuerza, agilidad y resistencia.">
     <meta name="theme-color" content="#00ff88">
+    <meta name="robots" content="index, follow">
 
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-ancestors 'none';">
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google.com https://*.google-maps.com; frame-ancestors 'none';">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer-policy" content="strict-origin-when-cross-origin">
@@ -20,575 +21,335 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="AKROSPORT">
 
-    <!-- Preconnect -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2300ff88'/%3E%3Ctext y='.9em' x='.1em' font-size='70' font-weight='bold' fill='%23050505'%3EA%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2300ff88'/%3E%3Ctext y='.9em' x='.1em' font-size='70' font-weight='bold' fill='%23000'%3EA%3C/text%3E%3C/svg%3E">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --neon: #00ff88;
             --neon-dim: #00cc6e;
             --void: #0a0a0a;
-            --surface: #111111;
-            --surface-elevated: #1a1a1a;
+            --surface: #111;
             --surface-card: #151515;
-            --text: #ffffff;
-            --text-dim: #999999;
-            --border: #333333;
+            --surface-elev: #1a1a1a;
+            --text: #fff;
+            --text-dim: #999;
+            --border: #333;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--void);
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--void);
             color: var(--text);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         /* Background */
         .bg-effects {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
+            position: fixed; inset: 0; pointer-events: none; z-index: 0;
         }
-
-        .bg-gradient {
+        .bg-grad {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 500px; height: 500px;
             border-radius: 50%;
             filter: blur(120px);
             opacity: 0.25;
             animation: float 12s ease-in-out infinite;
         }
-
-        .bg-gradient-1 {
-            top: -150px;
-            left: -150px;
-            background: var(--neon);
-        }
-
-        .bg-gradient-2 {
-            bottom: -150px;
-            right: -150px;
-            background: #0088ff;
-            animation-delay: -6s;
-        }
+        .bg-grad-1 { top: -150px; left: -150px; background: var(--neon); }
+        .bg-grad-2 { bottom: -150px; right: -150px; background: #0088ff; animation-delay: -6s; }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(20px, 20px) scale(1.1); }
+            0%, 100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(20px,20px) scale(1.1); }
         }
 
-        main {
-            position: relative;
-            z-index: 1;
-        }
+        main { position: relative; z-index: 1; }
 
         /* Hero */
         .hero {
             min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1920&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.85)), 
+                        url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1920&q=80');
+            background-size: cover; background-position: center;
         }
 
-        .hero-content {
-            max-width: 700px;
-            animation: fadeInUp 0.8s ease-out;
-        }
+        .hero-content { max-width: 700px; animation: fadeUp 0.8s ease-out; }
 
-        @keyframes fadeInUp {
+        @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 255, 136, 0.1);
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(0,255,136,0.1);
             border: 1px solid var(--neon);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--neon);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 1.5rem;
+            padding: 0.5rem 1.2rem; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 600;
+            color: var(--neon); text-transform: uppercase;
+            letter-spacing: 0.15em; margin-bottom: 1.5rem;
         }
-
         .badge::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--neon);
-            border-radius: 50%;
+            content: ''; width: 8px; height: 8px;
+            background: var(--neon); border-radius: 50%;
             animation: blink 1.5s ease-in-out infinite;
         }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
         h1 {
             font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            line-height: 1.1;
+            margin-bottom: 1rem; text-transform: uppercase;
+            letter-spacing: 0.05em; line-height: 1.1;
         }
+        h1 span { color: var(--neon); text-shadow: 0 0 30px rgba(0,255,136,0.6); }
 
-        h1 span {
-            color: var(--neon);
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
-        }
+        .hero-sub { font-size: 1.15rem; color: #ccc; margin-bottom: 2rem; }
 
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: #cccccc;
-            margin-bottom: 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .cta-btns {
+            display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
         }
 
         .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
+            padding: 1rem 2rem; border-radius: 50px;
+            text-decoration: none; font-weight: 700;
+            font-size: 0.9rem; text-transform: uppercase;
             letter-spacing: 0.05em;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            cursor: pointer; border: none;
         }
 
-        .btn-primary {
-            background: var(--neon);
-            color: #000;
-            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid var(--border);
-            color: var(--text);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--neon);
-            background: rgba(0, 255, 136, 0.1);
-        }
-
-        /* Section Titles */
-        .section-title {
-            text-align: center;
-            padding: 4rem 1rem 2rem;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title h2 span {
-            color: var(--neon);
-        }
-
-        .section-title p {
-            color: var(--text-dim);
-        }
-
-        /* Plans / Prices */
-        .plans {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .plan-card {
-            background: var(--surface-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .plan-card:hover {
-            border-color: var(--neon);
-            transform: translateY(-5px);
-        }
-
-        .plan-card.featured {
-            border-color: var(--neon);
-            background: linear-gradient(180deg, rgba(0,255,136,0.08) 0%, var(--surface-card) 100%);
-        }
-
-        .plan-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--neon);
-            color: #000;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .plan-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .plan-tag {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            margin-bottom: 1rem;
-        }
-
-        .plan-price {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--neon);
-            margin-bottom: 0.3rem;
-        }
-
-        .plan-price span {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            font-weight: 400;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin: 1.5rem 0;
-            padding: 0;
-        }
-
-        .plan-features li {
-            padding: 0.5rem 0;
-            color: #cccccc;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .plan-features li::before {
-            content: 'âœ“';
-            color: var(--neon);
-            font-weight: bold;
-        }
-
-        .plan-cta {
-            display: block;
-            text-align: center;
-            padding: 0.8rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .plan-cta.primary {
-            background: var(--neon);
-            color: #000;
-        }
-
-        .plan-cta.secondary {
-            background: rgba(255,255,255,0.1);
-            color: var(--text);
-        }
-
-        .plan-cta.secondary:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Schedule / Agenda */
-        .schedule {
-            background: var(--surface);
-            padding: 3rem 5%;
-        }
-
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .day-column {
-            background: var(--surface-card);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-
-        .day-header {
-            background: var(--surface-elevated);
-            padding: 1rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .day-header h3 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            color: var(--neon);
-        }
-
-        .day-header span {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-        }
-
-        .slots {
-            padding: 1rem;
-        }
-
-        .slot {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.6rem;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            background: rgba(255,255,255,0.03);
-            font-size: 0.85rem;
-        }
-
-        .slot-time {
-            font-weight: 600;
-        }
-
-        .slot-status {
-            font-size: 0.75rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-        }
-
-        .slot-status.available {
-            background: rgba(0,255,136,0.15);
-            color: var(--neon);
-        }
-
-        .slot-status.full {
-            background: rgba(255,68,68,0.15);
-            color: #ff4444;
-        }
-
-        .schedule-note {
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            background: var(--surface);
-        }
-
-        .schedule-note strong {
-            color: var(--neon);
-        }
-
-        /* Services */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: var(--surface-card);
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            border-color: var(--neon);
-            transform: translateY(-3px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            color: var(--neon);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .feature-card p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        /* Contact */
-        .contact {
-            padding: 4rem 5%;
-            text-align: center;
-            background: var(--surface);
-        }
-
-        .contact h2 {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .contact-link:hover {
-            color: var(--neon);
-        }
-
-        .contact-link svg {
-            width: 20px;
-            height: 20px;
-        }
+        .btn-primary { background: var(--neon); color: #000; box-shadow: 0 4px 20px rgba(0,255,136,0.4); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,255,136,0.5); }
+        .btn-sec { background: rgba(255,255,255,0.1); border: 2px solid var(--border); color: var(--text); }
+        .btn-sec:hover { border-color: var(--neon); background: rgba(0,255,136,0.1); }
 
         /* Info Bar */
         .info-bar {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            padding: 2rem;
-            flex-wrap: wrap;
-            background: var(--surface-elevated);
-            border-top: 1px solid var(--border);
+            display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+            padding: 2rem; background: var(--surface-elev);
+            border-bottom: 1px solid var(--border);
         }
-
-        .info-item {
-            text-align: center;
-        }
-
+        .info-item { text-align: center; }
         .info-item span {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            margin-bottom: 0.3rem;
-            text-transform: uppercase;
+            display: block; font-size: 0.8rem; color: var(--text-dim);
+            margin-bottom: 0.3rem; text-transform: uppercase;
             letter-spacing: 0.1em;
         }
+        .info-item strong { font-size: 1.1rem; }
+        .info-item a { color: var(--text); text-decoration: none; }
+        .info-item a:hover { color: var(--neon); }
 
-        .info-item strong {
-            font-size: 1.1rem;
-            color: var(--text);
+        /* Section Title */
+        .section { padding: 4rem 1rem 2rem; text-align: center; }
+        .section h2 {
+            font-size: 2rem; text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 0.5rem;
         }
+        .section h2 span { color: var(--neon); }
+        .section p { color: var(--text-dim); }
+
+        /* Plans Grid */
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; padding: 2rem 5%; max-width: 1200px; margin: 0 auto;
+        }
+
+        .plan-card {
+            background: var(--surface-card); border: 1px solid var(--border);
+            border-radius: 20px; padding: 2rem;
+            position: relative; transition: all 0.3s ease;
+        }
+        .plan-card:hover { border-color: var(--neon); transform: translateY(-5px); }
+        .plan-featured {
+            border-color: var(--neon);
+            background: linear-gradient(180deg, rgba(0,255,136,0.08) 0%, var(--surface-card) 100%);
+        }
+        .plan-badge {
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--neon); color: #000;
+            font-size: 0.7rem; font-weight: 700;
+            padding: 0.4rem 1rem; border-radius: 50px;
+            text-transform: uppercase;
+        }
+        .plan-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; }
+        .plan-tag { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1rem; }
+        .plan-price { font-size: 2.2rem; font-weight: 800; color: var(--neon); margin-bottom: 0.3rem; }
+        .plan-price span { font-size: 0.9rem; color: var(--text-dim); font-weight: 400; }
+        .plan-feats { list-style: none; margin: 1.5rem 0; padding: 0; }
+        .plan-feats li {
+            padding: 0.5rem 0; color: #ccc; font-size: 0.9rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .plan-feats li::before { content: 'âœ“'; color: var(--neon); font-weight: bold; }
+        .plan-btn {
+            display: block; text-align: center; padding: 0.8rem;
+            border-radius: 10px; text-decoration: none;
+            font-weight: 600; text-transform: uppercase;
+            font-size: 0.85rem; transition: all 0.3s ease;
+        }
+        .plan-btnPri { background: var(--neon); color: #000; }
+        .plan-btnSec { background: rgba(255,255,255,0.1); color: var(--text); }
+        .plan-btnSec:hover { background: rgba(255,255,255,0.2); }
+
+        /* Schedule */
+        .schedule { background: var(--surface); padding: 3rem 5%; }
+        .schedule-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem; max-width: 1000px; margin: 0 auto;
+        }
+        .day-col {
+            background: var(--surface-card); border-radius: 16px;
+            overflow: hidden; border: 1px solid var(--border);
+        }
+        .day-head {
+            background: var(--surface-elev); padding: 1rem;
+            text-align: center; border-bottom: 1px solid var(--border);
+        }
+        .day-head h3 { font-size: 1.1rem; text-transform: uppercase; color: var(--neon); }
+        .day-head span { font-size: 0.8rem; color: var(--text-dim); }
+        .slots { padding: 1rem; }
+        .slot {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.7rem; border-radius: 8px;
+            margin-bottom: 0.5rem; background: rgba(255,255,255,0.03);
+            font-size: 0.85rem;
+        }
+        .slot input[type="checkbox"] { display: none; }
+        .slot-label {
+            display: flex; justify-content: space-between; align-items: center;
+            width: 100%; cursor: pointer;
+        }
+        .slot-time { font-weight: 600; }
+        .slot input:checked + .slot-label .slot-status {
+            background: var(--neon); color: #000;
+        }
+        .slot-status {
+            font-size: 0.75rem; padding: 0.3rem 0.8rem;
+            border-radius: 4px; background: rgba(255,255,255,0.1);
+            color: var(--text-dim); transition: all 0.2s;
+        }
+        .schedule-note {
+            text-align: center; padding: 1.5rem;
+            color: var(--text-dim); font-size: 0.85rem;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem; padding: 2rem 5%; max-width: 1000px; margin: 0 auto;
+        }
+        .feat-card {
+            background: var(--surface-card); padding: 2rem;
+            border-radius: 16px; text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .feat-card:hover { border-color: var(--neon); transform: translateY(-3px); }
+        .feat-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .feat-card h3 { color: var(--neon); margin-bottom: 0.5rem; }
+        .feat-card p { color: var(--text-dim); font-size: 0.9rem; }
+
+        /* Transfer */
+        .transfer { padding: 2rem 5%; max-width: 600px; margin: 0 auto; }
+        .transfer-card {
+            background: var(--surface-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 2rem;
+        }
+        .transfer-card h3 {
+            font-size: 1.2rem; text-transform: uppercase;
+            margin-bottom: 1.5rem; color: var(--neon);
+        }
+        .transfer-row {
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .transfer-row:last-child { border-bottom: none; }
+        .transfer-label { color: var(--text-dim); font-size: 0.9rem; }
+        .transfer-value {
+            font-weight: 600; display: flex; align-items: center; gap: 0.5rem;
+        }
+        .copy-btn {
+            background: var(--neon); color: #000;
+            border: none; padding: 0.3rem 0.8rem;
+            border-radius: 4px; font-size: 0.75rem;
+            font-weight: 600; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover { opacity: 0.8; }
+        .copy-btn.copied { background: #fff; }
+
+        /* Map */
+        .map-section { padding: 2rem 5%; }
+        .map-container {
+            max-width: 1000px; margin: 0 auto;
+            border-radius: 16px; overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .map-container iframe { width: 100%; height: 350px; border: none; }
+
+        /* Contact */
+        .contact { padding: 4rem 5%; text-align: center; background: var(--surface); }
+        .contact h2 { font-size: 1.5rem; margin-bottom: 2rem; }
+        .contact-links {
+            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+        }
+        .contact-link {
+            display: flex; align-items: center; gap: 0.5rem;
+            color: var(--text-dim); text-decoration: none;
+            font-size: 0.9rem; transition: color 0.3s;
+        }
+        .contact-link:hover { color: var(--neon); }
+        .contact-link svg { width: 20px; height: 20px; }
 
         /* Footer */
         footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-dim);
-            font-size: 0.8rem;
+            text-align: center; padding: 2rem;
+            color: var(--text-dim); font-size: 0.8rem;
             border-top: 1px solid var(--border);
         }
-
-        footer span {
-            color: var(--neon);
-        }
+        footer span { color: var(--neon); }
 
         /* Mobile */
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
             .btn { width: 100%; justify-content: center; }
             .info-bar { gap: 1.5rem; }
-            .plans { padding: 2rem 1rem; }
+            .plans, .features { padding: 2rem 1rem; }
         }
     </style>
 </head>
 <body>
     <!-- Background -->
     <div class="bg-effects">
-        <div class="bg-gradient bg-gradient-1"></div>
-        <div class="bg-gradient bg-gradient-2"></div>
+        <div class="bg-grad bg-grad-1"></div>
+        <div class="bg-grad bg-grad-2"></div>
     </div>
 
     <main>
         <!-- Hero -->
         <section class="hero">
             <div class="hero-content">
-                <div class="badge">Gimnasio en Santiago</div>
+                <div class="badge">Los Andes - Chile</div>
                 <h1>Entrena al <span>MÃ¡ximo</span></h1>
-                <p class="hero-subtitle">El laboratorio de alto rendimiento mÃ¡s avanzado de Chile. MetodologÃ­as probadas para resultados reales.</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/56956802641?text=Hola,%20me%20interesan%20los%20planes%20de%20AKROSPORT" class="btn btn-primary" target="_blank" rel="noopener">
-                        Reservar Ahora
-                    </a>
-                    <a href="#planes" class="btn btn-secondary">
-                        Ver Planes
-                    </a>
+                <p class="hero-sub">El gimnasio de alto rendimiento mÃ¡s avanzado de Los Andes. MetodologÃ­as probadas para resultados reales.</p>
+                <div class="cta-btns">
+                    <a href="#reservar" class="btn btn-primary">Reservar Clase</a>
+                    <a href="#planes" class="btn btn-sec">Ver Planes</a>
                 </div>
             </div>
         </section>
@@ -597,20 +358,20 @@
         <div class="info-bar">
             <div class="info-item">
                 <span>Horario</span>
-                <strong>Lun-SÃ¡b 6:00 - 21:00</strong>
+                <strong>Lun-SÃ¡b 6:00-21:00</strong>
             </div>
             <div class="info-item">
                 <span>UbicaciÃ³n</span>
-                <strong>Santiago, Chile</strong>
+                <strong>Los Andes, ValparaÃ­so</strong>
             </div>
             <div class="info-item">
-                <span>WhatsApp</span>
-                <strong>+56 9 5680 2641</strong>
+                <span>Reservas</span>
+                <a href="tel:+56956190853"><strong>+56 9 5619 0853</strong></a>
             </div>
         </div>
 
-        <!-- Plans / Prices -->
-        <section class="section-title" id="planes">
+        <!-- Planes -->
+        <section class="section" id="planes">
             <h2>Nuestros <span>Planes</span></h2>
             <p>Elige el plan que mejor se adapte a tus objetivos</p>
         </section>
@@ -620,45 +381,42 @@
                 <div class="plan-name">BÃ¡sico</div>
                 <div class="plan-tag">2 dÃ­as por semana</div>
                 <div class="plan-price">.000<span>/mes</span></div>
-                <ul class="plan-features">
+                <ul class="plan-feats">
                     <li>Acceso a sala de mÃ¡quinas</li>
                     <li>Clases grupales incluidas</li>
                     <li>Casillero disponible</li>
-                    <li>Estacionamiento</li>
                 </ul>
-                <a href="https://wa.me/56956802641?text=Me%20interesa%20el%20plan%20BÃ¡sico" class="plan-cta secondary" target="_blank">Elegir Plan</a>
+                <a href="https://wa.me/56956190853?text=Me%20interesa%20el%20plan%20BÃ¡sico" class="plan-btn plan-btnSec" target="_blank">Elegir Plan</a>
             </div>
 
-            <div class="plan-card featured">
+            <div class="plan-card plan-featured">
                 <div class="plan-badge">MÃ¡s Popular</div>
                 <div class="plan-name">Standard</div>
                 <div class="plan-tag">3 dÃ­as por semana</div>
                 <div class="plan-price">.000<span>/mes</span></div>
-                <ul class="plan-features">
+                <ul class="plan-feats">
                     <li>Todo del plan BÃ¡sico</li>
                     <li>Seguimiento mensual</li>
                     <li>Plan nutricional bÃ¡sico</li>
-                    <li>EvaluaciÃ³n fÃ­sica mensual</li>
                 </ul>
-                <a href="https://wa.me/56956802641?text=Me%20interesa%20el%20plan%20Standard" class="plan-cta primary" target="_blank">Elegir Plan</a>
+                <a href="https://wa.me/56956190853?text=Me%20interesa%20el%20plan%20Standard" class="plan-btn plan-btnPri" target="_blank">Elegir Plan</a>
             </div>
 
             <div class="plan-card">
                 <div class="plan-name">Premium</div>
                 <div class="plan-tag">5 dÃ­as por semana</div>
                 <div class="plan-price">.000<span>/mes</span></div>
-                <ul class="plan-features">
+                <ul class="plan-feats">
                     <li>Acceso ilimitado</li>
                     <li>Seguimiento quincenal</li>
-                    <li>Plan nutricional completo</li>
-                    <li>Descuento en Personal Trainer</li>
+                    <li>Descuento en PT</li>
                 </ul>
-                <a href="https://wa.me/56956802641?text=Me%20interesa%20el%20plan%20Premium" class="plan-cta secondary" target="_blank">Elegir Plan</a>
+                <a href="https://wa.me/56956190853?text=Me%20interesa%20el%20plan%20Premium" class="plan-btn plan-btnSec" target="_blank">Elegir Plan</a>
             </div>
         </section>
 
         <!-- Personal Training -->
-        <section class="section-title">
+        <section class="section">
             <h2>Personal <span>Training</span></h2>
             <p>Entrenamiento 1 a 1 con profesionales certificados</p>
         </section>
@@ -668,216 +426,275 @@
                 <div class="plan-name">PT BÃ¡sico</div>
                 <div class="plan-tag">2 sesiones/semana</div>
                 <div class="plan-price">.000<span>/mes</span></div>
-                <ul class="plan-features">
+                <ul class="plan-feats">
                     <li>2 sesiones semanales</li>
                     <li>Programa personalizado</li>
                     <li>Control tÃ©cnico postural</li>
-                    <li>App de seguimiento</li>
                 </ul>
-                <a href="https://wa.me/56956802641?text=Me%20interesa%20PT%20BÃ¡sico" class="plan-cta secondary" target="_blank">Elegir</a>
+                <a href="https://wa.me/56956190853?text=Me%20interesa%20PT%20BÃ¡sico" class="plan-btn plan-btnSec" target="_blank">Elegir</a>
             </div>
 
-            <div class="plan-card featured">
+            <div class="plan-card plan-featured">
                 <div class="plan-badge">MÃ¡s Elegido</div>
                 <div class="plan-name">PT Completo</div>
                 <div class="plan-tag">3 sesiones/semana</div>
                 <div class="plan-price">.000<span>/mes</span></div>
-                <ul class="plan-features">
+                <ul class="plan-feats">
                     <li>3 sesiones semanales</li>
                     <li>Plan nutricional personalizado</li>
                     <li>MediciÃ³n de composiciÃ³n corporal</li>
-                    <li>Chat directo con tu PT</li>
                 </ul>
-                <a href="https://wa.me/56956802641?text=Me%20interesa%20PT%20Completo" class="plan-cta primary" target="_blank">Elegir</a>
+                <a href="https://wa.me/56956190853?text=Me%20interesa%20PT%20Completo" class="plan-btn plan-btnPri" target="_blank">Elegir</a>
             </div>
 
             <div class="plan-card">
                 <div class="plan-name">PT Intensivo</div>
                 <div class="plan-tag">5 sesiones/semana</div>
                 <div class="plan-price">.000<span>/mes</span></div>
-                <ul class="plan-features">
+                <ul class="plan-feats">
                     <li>5 sesiones semanales</li>
-                    <li>PeriodizaciÃ³n avanzada</li>
                     <li>NutriciÃ³n y suplementaciÃ³n</li>
                     <li>Soporte 24/7</li>
                 </ul>
-                <a href="https://wa.me/56956802641?text=Me%20interesa%20PT%20Intensivo" class="plan-cta secondary" target="_blank">Elegir</a>
+                <a href="https://wa.me/56956190853?text=Me%20interesa%20PT%20Intensivo" class="plan-btn plan-btnSec" target="_blank">Elegir</a>
             </div>
         </section>
 
-        <!-- Schedule / Agenda -->
-        <section class="section-title">
-            <h2>Agenda de <span>Clases</span></h2>
-            <p>Reserva tu hora de forma anticipada</p>
+        <!-- Agenda / Schedule -->
+        <section class="section" id="reservar">
+            <h2>Agenda tu <span>Clase</span></h2>
+            <p>Selecciona el dÃ­a y horario para tu clase</p>
         </section>
 
         <section class="schedule">
             <div class="schedule-grid">
-                <!-- Lunes -->
-                <div class="day-column">
-                    <div class="day-header">
-                        <h3>Lunes</h3>
-                        <span>6:00 - 21:00</span>
-                    </div>
+                <div class="day-col">
+                    <div class="day-head"><h3>Lunes</h3><span>6:00 - 21:00</span></div>
                     <div class="slots">
-                        <div class="slot"><span class="slot-time">06:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">07:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">08:00</span><span class="slot-status full">Lleno</span></div>
-                        <div class="slot"><span class="slot-time">12:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">17:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">18:30</span><span class="slot-status full">Lleno</span></div>
-                        <div class="slot"><span class="slot-time">20:00</span><span class="slot-status available">Disponible</span></div>
+                        <div class="slot"><input type="checkbox" id="lu06" data-day="Lunes" data-time="06:00"><label class="slot-label" for="lu06"><span class="slot-time">06:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="lu07" data-day="Lunes" data-time="07:00"><label class="slot-label" for="lu07"><span class="slot-time">07:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="lu12" data-day="Lunes" data-time="12:00"><label class="slot-label" for="lu12"><span class="slot-time">12:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="lu17" data-day="Lunes" data-time="17:00"><label class="slot-label" for="lu17"><span class="slot-time">17:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="lu1830" data-day="Lunes" data-time="18:30"><label class="slot-label" for="lu1830"><span class="slot-time">18:30</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="lu20" data-day="Lunes" data-time="20:00"><label class="slot-label" for="lu20"><span class="slot-time">20:00</span><span class="slot-status">Reservar</span></label></div>
                     </div>
                 </div>
 
-                <!-- Martes -->
-                <div class="day-column">
-                    <div class="day-header">
-                        <h3>Martes</h3>
-                        <span>6:00 - 21:00</span>
-                    </div>
+                <div class="day-col">
+                    <div class="day-head"><h3>Martes</h3><span>6:00 - 21:00</span></div>
                     <div class="slots">
-                        <div class="slot"><span class="slot-time">06:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">07:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">12:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">17:00</span><span class="slot-status full">Lleno</span></div>
-                        <div class="slot"><span class="slot-time">18:30</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">20:00</span><span class="slot-status available">Disponible</span></div>
+                        <div class="slot"><input type="checkbox" id="ma06" data-day="Martes" data-time="06:00"><label class="slot-label" for="ma06"><span class="slot-time">06:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ma07" data-day="Martes" data-time="07:00"><label class="slot-label" for="ma07"><span class="slot-time">07:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ma12" data-day="Martes" data-time="12:00"><label class="slot-label" for="ma12"><span class="slot-time">12:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ma17" data-day="Martes" data-time="17:00"><label class="slot-label" for="ma17"><span class="slot-time">17:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ma1830" data-day="Martes" data-time="18:30"><label class="slot-label" for="ma1830"><span class="slot-time">18:30</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ma20" data-day="Martes" data-time="20:00"><label class="slot-label" for="ma20"><span class="slot-time">20:00</span><span class="slot-status">Reservar</span></label></div>
                     </div>
                 </div>
 
-                <!-- MiÃ©rcoles -->
-                <div class="day-column">
-                    <div class="day-header">
-                        <h3>MiÃ©rcoles</h3>
-                        <span>6:00 - 21:00</span>
-                    </div>
+                <div class="day-col">
+                    <div class="day-head"><h3>MiÃ©rcoles</h3><span>6:00 - 21:00</span></div>
                     <div class="slots">
-                        <div class="slot"><span class="slot-time">06:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">07:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">12:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">17:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">18:30</span><span class="slot-status full">Lleno</span></div>
-                        <div class="slot"><span class="slot-time">20:00</span><span class="slot-status available">Disponible</span></div>
+                        <div class="slot"><input type="checkbox" id="mi06" data-day="MiÃ©rcoles" data-time="06:00"><label class="slot-label" for="mi06"><span class="slot-time">06:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="mi07" data-day="MiÃ©rcoles" data-time="07:00"><label class="slot-label" for="mi07"><span class="slot-time">07:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="mi12" data-day="MiÃ©rcoles" data-time="12:00"><label class="slot-label" for="mi12"><span class="slot-time">12:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="mi17" data-day="MiÃ©rcoles" data-time="17:00"><label class="slot-label" for="mi17"><span class="slot-time">17:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="mi1830" data-day="MiÃ©rcoles" data-time="18:30"><label class="slot-label" for="mi1830"><span class="slot-time">18:30</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="mi20" data-day="MiÃ©rcoles" data-time="20:00"><label class="slot-label" for="mi20"><span class="slot-time">20:00</span><span class="slot-status">Reservar</span></label></div>
                     </div>
                 </div>
 
-                <!-- Jueves -->
-                <div class="day-column">
-                    <div class="day-header">
-                        <h3>Jueves</h3>
-                        <span>6:00 - 21:00</span>
-                    </div>
+                <div class="day-col">
+                    <div class="day-head"><h3>Jueves</h3><span>6:00 - 21:00</span></div>
                     <div class="slots">
-                        <div class="slot"><span class="slot-time">06:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">07:00</span><span class="slot-status full">Lleno</span></div>
-                        <div class="slot"><span class="slot-time">12:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">17:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">18:30</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">20:00</span><span class="slot-status available">Disponible</span></div>
+                        <div class="slot"><input type="checkbox" id="ju06" data-day="Jueves" data-time="06:00"><label class="slot-label" for="ju06"><span class="slot-time">06:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ju07" data-day="Jueves" data-time="07:00"><label class="slot-label" for="ju07"><span class="slot-time">07:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ju12" data-day="Jueves" data-time="12:00"><label class="slot-label" for="ju12"><span class="slot-time">12:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ju17" data-day="Jueves" data-time="17:00"><label class="slot-label" for="ju17"><span class="slot-time">17:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ju1830" data-day="Jueves" data-time="18:30"><label class="slot-label" for="ju1830"><span class="slot-time">18:30</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="ju20" data-day="Jueves" data-time="20:00"><label class="slot-label" for="ju20"><span class="slot-time">20:00</span><span class="slot-status">Reservar</span></label></div>
                     </div>
                 </div>
 
-                <!-- Viernes -->
-                <div class="day-column">
-                    <div class="day-header">
-                        <h3>Viernes</h3>
-                        <span>6:00 - 21:00</span>
-                    </div>
+                <div class="day-col">
+                    <div class="day-head"><h3>Viernes</h3><span>6:00 - 21:00</span></div>
                     <div class="slots">
-                        <div class="slot"><span class="slot-time">06:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">07:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">12:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">17:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">18:30</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">20:00</span><span class="slot-status available">Disponible</span></div>
+                        <div class="slot"><input type="checkbox" id="vi06" data-day="Viernes" data-time="06:00"><label class="slot-label" for="vi06"><span class="slot-time">06:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="vi07" data-day="Viernes" data-time="07:00"><label class="slot-label" for="vi07"><span class="slot-time">07:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="vi12" data-day="Viernes" data-time="12:00"><label class="slot-label" for="vi12"><span class="slot-time">12:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="vi17" data-day="Viernes" data-time="17:00"><label class="slot-label" for="vi17"><span class="slot-time">17:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="vi1830" data-day="Viernes" data-time="18:30"><label class="slot-label" for="vi1830"><span class="slot-time">18:30</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="vi20" data-day="Viernes" data-time="20:00"><label class="slot-label" for="vi20"><span class="slot-time">20:00</span><span class="slot-status">Reservar</span></label></div>
                     </div>
                 </div>
 
-                <!-- SÃ¡bado -->
-                <div class="day-column">
-                    <div class="day-header">
-                        <h3>SÃ¡bado</h3>
-                        <span>6:00 - 14:00</span>
-                    </div>
+                <div class="day-col">
+                    <div class="day-head"><h3>SÃ¡bado</h3><span>7:00 - 14:00</span></div>
                     <div class="slots">
-                        <div class="slot"><span class="slot-time">07:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">08:00</span><span class="slot-status available">Disponible</span></div>
-                        <div class="slot"><span class="slot-time">09:00</span><span class="slot-status full">Lleno</span></div>
-                        <div class="slot"><span class="slot-time">10:00</span><span class="slot-status full">Lleno</span></div>
-                        <div class="slot"><span class="slot-time">11:00</span><span class="slot-status available">Disponible</span></div>
+                        <div class="slot"><input type="checkbox" id="sa07" data-day="SÃ¡bado" data-time="07:00"><label class="slot-label" for="sa07"><span class="slot-time">07:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="sa08" data-day="SÃ¡bado" data-time="08:00"><label class="slot-label" for="sa08"><span class="slot-time">08:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="sa09" data-day="SÃ¡bado" data-time="09:00"><label class="slot-label" for="sa09"><span class="slot-time">09:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="sa10" data-day="SÃ¡bado" data-time="10:00"><label class="slot-label" for="sa10"><span class="slot-time">10:00</span><span class="slot-status">Reservar</span></label></div>
+                        <div class="slot"><input type="checkbox" id="sa11" data-day="SÃ¡bado" data-time="11:00"><label class="slot-label" for="sa11"><span class="slot-time">11:00</span><span class="slot-status">Reservar</span></label></div>
                     </div>
                 </div>
+            </div>
+
+            <div class="cta-btns" style="margin-top: 1.5rem;">
+                <button class="btn btn-primary" onclick="enviarReserva()">
+                    Confirmar Reserva por WhatsApp
+                </button>
             </div>
 
             <div class="schedule-note">
                 <strong>Horarios:</strong> Lunes a viernes 6:00-21:00 | SÃ¡bados 7:00-14:00<br>
-                Las clases son's de 60 minutos. Reserva con anticipaciÃ³n.
+                Las clases son de 60 minutos. Reserva con anticipaciÃ³n.
             </div>
         </section>
 
-        <!-- Features / Services -->
-        <section class="section-title">
+        <!-- Services -->
+        <section class="section">
             <h2>Nuestros <span>Servicios</span></h2>
             <p>Todo lo que necesitas para alcanzar tu mÃ¡ximo potencial</p>
         </section>
 
         <section class="features">
-            <div class="feature-card">
-                <div class="feature-icon">ðŸ’ª</div>
+            <div class="feat-card">
+                <div class="feat-icon">ðŸ’ª</div>
                 <h3>Fuerza</h3>
                 <p>Entrenamientos de alta intensidad para desarrollar potencia y masa muscular.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">âš¡</div>
+            <div class="feat-card">
+                <div class="feat-icon">âš¡</div>
                 <h3>Agilidad</h3>
-                <p>Mejora tu coordinaciÃ³n, velocidad y reflejos con ejercicios especÃ­ficos.</p>
+                <p>Mejora tu coordinaciÃ³n, velocidad y reflejos.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">ðŸ”¥</div>
+            <div class="feat-card">
+                <div class="feat-icon">ðŸ”¥</div>
                 <h3>Resistencia</h3>
-                <p>Rutinas diseÃ±adas para mejorar tu capacidad cardiovascular y resistencia.</p>
+                <p>Rutinas para mejorar tu capacidad cardiovascular.</p>
+            </div>
+        </section>
+
+        <!-- Transfer -->
+        <section class="section">
+            <h2>Datos de <span>Transferencia</span></h2>
+            <p>Realiza tu pago de forma segura</p>
+        </section>
+
+        <section class="transfer">
+            <div class="transfer-card">
+                <h3>ðŸ‡¨ðŸ‡± Transferencia Nacional</h3>
+                <div class="transfer-row">
+                    <span class="transfer-label">Titular</span>
+                    <span class="transfer-value">Melfig SpA <button class="copy-btn" onclick="copyText('Melfig SpA', this)">Copiar</button></span>
+                </div>
+                <div class="transfer-row">
+                    <span class="transfer-label">RUT</span>
+                    <span class="transfer-value">77.447.603-2 <button class="copy-btn" onclick="copyText('77.447.603-2', this)">Copiar</button></span>
+                </div>
+                <div class="transfer-row">
+                    <span class="transfer-label">Banco</span>
+                    <span class="transfer-value">ItaÃº <button class="copy-btn" onclick="copyText('ItaÃº', this)">Copiar</button></span>
+                </div>
+                <div class="transfer-row">
+                    <span class="transfer-label">Tipo</span>
+                    <span class="transfer-value">Cuenta Corriente <button class="copy-btn" onclick="copyText('Cuenta Corriente', this)">Copiar</button></span>
+                </div>
+                <div class="transfer-row">
+                    <span class="transfer-label">NÃºmero</span>
+                    <span class="transfer-value">212532700 <button class="copy-btn" onclick="copyText('212532700', this)">Copiar</button></span>
+                </div>
+                <div class="transfer-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                    <span class="transfer-label">Email</span>
+                    <span class="transfer-value">transfer@akrosport.cl <button class="copy-btn" onclick="copyText('transfer@akrosport.cl', this)">Copiar</button></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map -->
+        <section class="section">
+            <h2>Nuestra <span>UbicaciÃ³n</span></h2>
+            <p>EncuÃ©ntranos en Los Andes</p>
+        </section>
+
+        <section class="map-section">
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.5!2d-70.7!3d-32.833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9681e4e3b4c5c5c5%3A0x0!2sLos%20Andes%2C%20Valpara%C3%ADso!5e0!3m2!1ses!2scl!4v1600000000000!5m2!1ses!2scl" 
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </section>
 
         <!-- Contact -->
         <section class="contact">
-            <h2>Â¿Tienes dudas? Hablemos</h2>
+            <h2>Â¿Necesitas ayuda?</h2>
             <div class="contact-links">
                 <a href="tel:+56956802641" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
-                    </svg>
-                    +56 9 5680 2641
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+                    +56 9 5680 2641 (Soporte)
+                </a>
+                <a href="https://wa.me/56956190853" class="contact-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.253M12 21a9.004 9.004 0 01-8.716-6.253M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 20.25a11.953 11.953 0 01-8.843-4.582m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133.815-8.716 2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                    +56 9 5619 0853 (Reservas)
                 </a>
                 <a href="mailto:contacto@akrosport.cl" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
                     contacto@akrosport.cl
-                </a>
-                <a href="https://instagram.com/akrosport_" class="contact-link" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    </svg>
-                    @akrosport_
                 </a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Â© 2026 <span>AKROSPORT</span>. Entrena al mÃ¡ximo.</p>
+        <p>Â© 2026 <span>AKROSPORT</span> Los Andes. Entrena al mÃ¡ximo.</p>
     </footer>
 
     <script>
-        // Parallax effect
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 10;
-            const y = (e.clientY / window.innerHeight - 0.5) * 10;
-            document.querySelectorAll('.bg-gradient').forEach((el, i) => {
-                el.style.transform = 	ranslate(px, px);
+        // Copy to clipboard
+        function copyText(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copiado';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copiar';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Send reservation to WhatsApp
+        function enviarReserva() {
+            const checks = document.querySelectorAll('input[type="checkbox"]:checked');
+            if (checks.length === 0) {
+                alert('Selecciona al menos un horario');
+                return;
+            }
+            let msg = 'Hola, quiero reservar las siguientes clases:%0A';
+            checks.forEach(chk => {
+                const day = chk.dataset.day;
+                const time = chk.dataset.time;
+                msg += -  a las %0A;
+            });
+            msg += '%0AEspero confirmaciÃ³n. Gracias!';
+            window.open('https://wa.me/56956190853?text=' + msg, '_blank');
+        }
+
+        // Checkbox styling
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                const status = label.querySelector('.slot-status');
+                if (this.checked) {
+                    status.textContent = 'Seleccionado';
+                    status.style.background = '#00ff88';
+                    status.style.color = '#000';
+                } else {
+                    status.textContent = 'Reservar';
+                    status.style.background = '';
+                    status.style.color = '';
+                }
             });
         });
     </script>
