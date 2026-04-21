@@ -44,7 +44,6 @@ header{position:fixed;top:0;left:0;right:0;background:rgba(10,10,10,0.95);paddin
 .schedule-note{text-align:center;padding:1rem;color:var(--muted)}
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem}
 .feature-item{background:var(--surface);padding:1rem;border-radius:12px;text-align:center}
-.feature-icon{font-size:1.5rem}
 .feature-name{font-size:0.8rem;font-weight:600}
 .transfer-grid{display:grid;gap:0.5rem}
 .transfer-item{display:flex;justify-content:space-between;padding:1rem;background:var(--surface);border-radius:12px}
@@ -61,19 +60,26 @@ header{position:fixed;top:0;left:0;right:0;background:rgba(10,10,10,0.95);paddin
 .tab{flex:1;padding:0.8rem;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--muted);font-weight:600;text-align:center;cursor:pointer}
 .tab.active{background:var(--neon);color:#000}
 footer{padding:2rem;text-align:center;color:var(--muted);font-size:0.8rem;border-top:1px solid var(--border)}
+/* Floating Buttons */
+.float-btns{position:fixed;bottom:1.5rem;right:1.5rem;display:flex;flex-direction:column;gap:0.8rem;z-index:200}
+.float-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform 0.2s}
+.float-btn:hover{transform:scale(1.1)}
+.float-wa{background:#25D366;color:#fff}
+.float-insta{background:linear-gradient(45deg,#f09433,#e66825,#dc2743,#cc2366,#bc2288);color:#fff}
+.float-btn svg{width:26px;height:26px}
 </style>
 </head>
 <body>
 <header>
 <div class=logo>AKRO<span>SPORT</span></div>
-<a href=tel:+56956190853 class=header-btn title=Llamar>
+<a href=tel:+56956190853 class=header-btn>
 <svg xmlns=http://www.w3.org/2000/svg fill=none stroke=currentColor stroke-width=2 viewBox=0 0 24 24><path d=M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z/></svg></a>
 </header>
 <main>
 <section class=hero>
 <div class=hero-badge>Los Andes</div>
 <h1>Entrena al<br><span>Maximo</span></h1>
-<p>El gimnasio de alto rendimiento en Los Andes. Planes disenhados para todos los niveles.</p>
+<p>El gimnasio de alto rendimiento en Los Andes.</p>
 <div class=hero-actions>
 <a href=#agendar class=btn btn-primary>Reservar Clase</a>
 <a href=#membresia class=btn btn-outline>Ver Planes</a>
@@ -86,27 +92,23 @@ footer{padding:2rem;text-align:center;color:var(--muted);font-size:0.8rem;border
 </div>
 <section class=section id=membresia>
 <h2 class=section-title>Membresias</h2>
-<p class=section-sub>Elige tu plan</p>
 </section>
 <section class=plans-grid style=padding:0 1rem>
 <div class=plan-card>
-<div class=plan-name>Basico</div>
-<div class=plan-days>2 dias por semana</div>
+<div class=plan-name>Basico 2 dias</div>
 <div class=plan-price>35000<span>/mes</span></div>
 <ul class=plan-features><li>Sala de maquinas</li><li>Clases grupales</li><li>Casillero</li></ul>
 <a href=https://wa.me/56956190853?text=Me%20interesa%20plan%20Basico class="btn btn-outline plan-btn">Elegir</a>
 </div>
 <div class="plan-card featured">
-<div style="font-size:0.7rem;font-weight:700;color:#000;background:var(--neon);padding:0.2rem 0.5rem;border-radius:4px;width:fit-content;margin-bottom:0.5rem">POPULAR</div>
-<div class=plan-name>Standard</div>
-<div class=plan-days>3 dias por semana</div>
+<div style="font-size:0.7rem;font-weight:700;color:#000;background:var(--neon);padding:0.2rem 0.5rem;border-radius:4px;width:fit-content">POPULAR</div>
+<div class=plan-name>Standard 3 dias</div>
 <div class=plan-price>45000<span>/mes</span></div>
 <ul class=plan-features><li>Todo Basico</li><li>Seguimiento mensual</li><li>Plan nutricional</li></ul>
 <a href=https://wa.me/56956190853?text=Me%20interesa%20plan%20Standard class="btn btn-primary plan-btn">Elegir</a>
 </div>
 <div class=plan-card>
-<div class=plan-name>Premium</div>
-<div class=plan-days>5 dias por semana</div>
+<div class=plan-name>Premium 5 dias</div>
 <div class=plan-price>60000<span>/mes</span></div>
 <ul class=plan-features><li>Acceso ilimitado</li><li>Seguimiento quincenal</li><li>Descuento en PT</li></ul>
 <a href=https://wa.me/56956190853?text=Me%20interesa%20plan%20Premium class="btn btn-outline plan-btn">Elegir</a>
@@ -114,35 +116,30 @@ footer{padding:2rem;text-align:center;color:var(--muted);font-size:0.8rem;border
 </section>
 <section class=section>
 <h2 class=section-title>Personal Training</h2>
-<p class=section-sub>Entrenamiento 1 a 1</p>
 </section>
 <section class=plans-grid style=padding:0 1rem>
 <div class=plan-card>
-<div class=plan-name>PT Basico</div>
-<div class=plan-days>2 dias por semana</div>
+<div class=plan-name>PT Basico 2 dias</div>
 <div class=plan-price>130000<span>/mes</span></div>
-<ul class=plan-features><li>2 sesiones</li><li>Programa personalizado</li><li>Control postural</li><li>App de seguimiento</li></ul>
+<ul class=plan-features><li>2 sesiones</li><li>Programa personalizado</li><li>Control postural</li></ul>
 <a href=https://wa.me/56956190853?text=Me%20interesa%20PT%20Basico class="btn btn-outline plan-btn">Elegir</a>
 </div>
 <div class="plan-card featured">
-<div style="font-size:0.7rem;font-weight:700;color:#000;background:var(--neon);padding:0.2rem 0.5rem;border-radius:4px;width:fit-content;margin-bottom:0.5rem">POPULAR</div>
-<div class=plan-name>PT Completo</div>
-<div class=plan-days>3 dias por semana</div>
+<div style="font-size:0.7rem;font-weight:700;color:#000;background:var(--neon);padding:0.2rem 0.5rem;border-radius:4px;width:fit-content">POPULAR</div>
+<div class=plan-name>PT Completo 3 dias</div>
 <div class=plan-price>170000<span>/mes</span></div>
-<ul class=plan-features><li>3 sesiones</li><li>Plan nutricional personalizado</li><li>Medicion corporal</li><li>Chat directo con tu PT</li></ul>
+<ul class=plan-features><li>3 sesiones</li><li>Plan nutricional</li><li>Medicion corporal</li></ul>
 <a href=https://wa.me/56956190853?text=Me%20interesa%20PT%20Completo class="btn btn-primary plan-btn">Elegir</a>
 </div>
 <div class=plan-card>
-<div class=plan-name>PT Intensivo</div>
-<div class=plan-days>5 dias por semana</div>
+<div class=plan-name>PT Intensivo 5 dias</div>
 <div class=plan-price>220000<span>/mes</span></div>
-<ul class=plan-features><li>5 sesiones</li><li>Nutricion + suplementacion</li><li>Evaluaciones semanales</li><li>Soporte 24/7</li></ul>
+<ul class=plan-features><li>5 sesiones</li><li>Nutricion</li><li>Soporte 24/7</li></ul>
 <a href=https://wa.me/56956190853?text=Me%20interesa%20PT%20Intensivo class="btn btn-outline plan-btn">Elegir</a>
 </div>
 </section>
 <section class=section id=agendar>
 <h2 class=section-title>Agenda tu Clase</h2>
-<p class=section-sub>Selecciona dia y hora</p>
 </section>
 <div class=tabs>
 <div class="tab active" data-day=0>Mon</div>
@@ -154,65 +151,49 @@ footer{padding:2rem;text-align:center;color:var(--muted);font-size:0.8rem;border
 </div>
 <div class=schedule>
 <div class=slots-grid id=slots-container></div>
-<div style=margin-top:1rem>
-<a href=# class="btn btn-primary" onclick=reservar()>Confirmar por WhatsApp</a>
+<div style=margin-top:1rem><a href=# class="btn btn-primary" onclick=reservar()>Reservar</a></div>
 </div>
-</div>
-<p class=schedule-note>Las clases son de 60 min. Reserva con anticipacion.</p>
-<section class=section>
-<h2 class=section-title>Servicios</h2>
-</section>
-<section class=features-grid style=padding:0 1rem>
-<div class=feature-item><div class=feature-icon>F</div><div class=feature-name>X Fuerza</div></div>
-<div class=feature-item><div class=feature-icon>A</div><div class=feature-name>X Agilidad</div></div>
-<div class=feature-item><div class=feature-icon>R</div><div class=feature-name>X Resistencia</div></div>
-</section>
 <section class=section>
 <h2 class=section-title>Transferencia</h2>
-<p class=section-sub>Datos para pago</p>
 </section>
 <section class=transfer-grid style=padding:0 1rem>
 <div class=transfer-item><span class=transfer-label>Titular</span><span class=transfer-value>Melfig SpA <button class=copy-btn onclick="copy(this,'Melfig SpA')">Copiar</button></span></div>
 <div class=transfer-item><span class=transfer-label>RUT</span><span class=transfer-value>77.447.603-2 <button class=copy-btn onclick="copy(this,'77.447.603-2')">Copiar</button></span></div>
 <div class=transfer-item><span class=transfer-label>Banco</span><span class=transfer-value>Itau <button class=copy-btn onclick="copy(this,'Itau')">Copiar</button></span></div>
 <div class=transfer-item><span class=transfer-label>Cuenta</span><span class=transfer-value>212532700 <button class=copy-btn onclick="copy(this,'212532700')">Copiar</button></span></div>
-<div class=transfer-item><span class=transfer-label>Email</span><span class=transfer-value>transfer@akrosport.cl <button class=copy-btn onclick="copy(this,'transfer@akrosport.cl')">Copiar</button></span></div>
 </section>
 <section class=section>
 <h2 class=section-title>Contacto</h2>
 </section>
 <section class=contact-grid style=padding:0 1rem>
-<a href=tel:+56956190853 class=contact-btn>
-<svg xmlns=http://www.w3.org/2000/svg fill=none stroke=currentColor stroke-width=2 viewBox=0 0 24 24><path d=M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z/></svg>
-<div class=text><strong>Llamar</strong><span>+56 9 5619 0853</span></div>
-</a>
-<a href=https://wa.me/56956190853 class=contact-btn>
-<svg xmlns=http://www.w3.org/2000/svg fill=none stroke=currentColor stroke-width=2 viewBox=0 0 24 24><path d=M12 21a9.004 9.004 0 008.716-6.253M12 21a9.004 9.004 0 01-8.716-6.253M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582/></svg>
-<div class=text><strong>WhatsApp</strong><span>Reservas</span></div>
-</a>
-<a href=mailto:contacto@akrosport.cl class=contact-btn>
-<svg xmlns=http://www.w3.org/2000/svg fill=none stroke=currentColor stroke-width=2 viewBox=0 0 24 24><path d=M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75/></svg>
-<div class=text><strong>Email</strong><span>contacto@akrosport.cl</span></div>
-</a>
+<a href=tel:+56956190853 class=contact-btn>Llamar +56 9 5619 0853</a>
+<a href=https://wa.me/56956190853 class=contact-btn>WhatsApp Reservas</a>
+<a href=https://instagram.com/akrosport_ class=contact-btn>Instagram @akrosport_</a>
+<a href=mailto:contacto@akrosport.cl class=contact-btn>Email contacto@akrosport.cl</a>
 </section>
-<section class=section>
-<h2 class=section-title>Ubicacion</h2>
-</section>
-<div style="height:250px;background:var(--surface);margin:0 1rem;border-radius:16px;overflow:hidden">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.5!2d-70.7!3d-32.833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0!2sLos%20Andes!5e0!3m2!1ses!2scl" width=100% height=100% style=border:0 allowfullscreen loading=lazy></iframe>
-</div>
-</main>
 <footer><p>2026 AKROSPORT Los Andes</p></footer>
+</main>
+
+<!-- Floating Buttons -->
+<div class=float-btns>
+<a href=https://wa.me/56956190853 class="float-btn float-wa" target=_blank>
+<svg viewBox=0 0 24 24 fill=currentColor><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.151-.149.347-.424.522-.636.174-.212.218-.298.3-.496.074-.198.099-.397.099-.596 0-.149-.025-1.377-.1-2.075 0-.696-.15-1.373-.424-2.075-.273-.697-.669-1.371-1.096-1.951-.42-.575-1.074-.966-1.628-1.294-.174-.099-.397-.15-.596-.15-.198 0-.397.025-.596.075-.198.149-.347.223-.496.372-.149.149-.298.348-.496.596-.075.074-.149.173-.223.298-.074.124-.149.223-.223.347-.074.124-.149.223-.223.347-.075.124-.149.223-.298.371-.149.149-.347.298-.596.496-.248.198-.468.42-.67.596-.199.174-.42.372-.596.62-.174.248-.347.472-.596.748 0 0 .148.223.348.596-.149.149-.596.372-.596.372zM12.01 21.49c-.173 0-.347-.025-.496-.074-.149-.05-.347-.124-.546-.273-.198-.149-.372-.347-.545-.596-.174-.248-.322-.546-.397-.748-.075-.199-.124-.422-.149-.596 0-.174.025-.397.049-.596.025-.198.074-.422.124-.596.05-.174.124-.347.174-.496.05-.149.124-.298.174-.422.05-.124.124-.223.173-.298.074-.075.173-.149.272-.223.099-.074.223-.149.347-.223.124-.074.272-.149.446-.223.173-.074.396-.149.62-.223.223-.074.446-.149.695-.223.248-.075.521-.149.795-.149.274 0 .546.074.795.149.248.074.496.149.695.223.174.074.372.149.546.223.124.074.248.149.347.223.099.074.198.149.272.223.05.075.124.174.173.298.05.124.124.273.174.422.05.174.074.397.124.596.025.199.074.422.149.596.075.202.223.5.397.748.173.249.347.447.545.596.199.149.397.223.546.273.149.049.347.074.496.074.174 0 .521-.025.795-.149.248-.074.446-.149.62-.223.174-.074.347-.149.446-.223.099-.074.198-.149.272-.223.074-.074.149-.149.173-.298.05-.124.124-.273.174-.422.05-.174.099-.397.124-.596.025-.199.074-.422.149-.596z"/></svg>
+</a>
+<a href=https://instagram.com/akrosport_ class="float-btn float-insta" target=_blank>
+<svg viewBox=0 0 24 24 fill=currentColor><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.618-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+</a>
+</div>
+
 <script>
 var schedules={0:['06:00','07:00','12:00','17:00','18:30','20:00'],1:['06:00','07:00','12:00','17:00','18:30','20:00'],2:['06:00','07:00','12:00','17:00','18:30','20:00'],3:['06:00','07:00','12:00','17:00','18:30','20:00'],4:['06:00','07:00','12:00','17:00','18:30','20:00'],5:['07:00','08:00','09:00','10:00','11:00']};
 var dayNames=['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
 var selectedDay=0;
 var selectedSlots=[];
-function renderSlots(){var html='';schedules[selectedDay].forEach(function(t){html+='<button class="slot-btn '+(selectedSlots.includes(t)?'selected':'')+'" onclick="toggleSlot(\''+t+'\')">'+t+'</button>'});document.getElementById('slots-container').innerHTML=html}
+function renderSlots(){var h='';schedules[selectedDay].forEach(function(t){h+='<button class="slot-btn '+(selectedSlots.includes(t)?'selected':'')+'" onclick="toggleSlot(\''+t+'\')">'+t+'</button>'});document.getElementById('slots-container').innerHTML=h}
 function toggleSlot(t){if(selectedSlots.includes(t)){selectedSlots=selectedSlots.filter(function(s){return s!==t})}else{selectedSlots.push(t)}renderSlots()}
-document.querySelectorAll('.tab').forEach(function(tab,i){tab.onclick=function(){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});tab.classList.add('active');selectedDay=i;selectedSlots=[];renderSlots()}});
-function copy(btn,txt){navigator.clipboard.writeText(txt).then(function(){btn.textContent='OK';setTimeout(function(){btn.textContent='Copiar'},1500)})}
-function reservar(){if(selectedSlots.length===0){alert('Selecciona un horario')}else{var msg='Hola, quiero reservar:';selectedSlots.forEach(function(t){msg+=' - '+dayNames[selectedDay]+' '+t});msg+=' Gracias!';window.open('https://wa.me/56956190853?text='+encodeURIComponent(msg),'_blank')}}
+document.querySelectorAll('.tab').forEach(function(tb,i){tb.onclick=function(){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});tb.classList.add('active');selectedDay=i;selectedSlots=[];renderSlots()}});
+function copy(b,txt){navigator.clipboard.writeText(txt).then(function(){b.textContent='OK';setTimeout(function(){b.textContent='Copiar'},1500)})}
+function reservar(){if(selectedSlots.length==0){alert('Selecciona un horario')}else{var msg='Hola, quiero reserva:';selectedSlots.forEach(function(t){msg+=' - '+dayNames[selectedDay]+' '+t});window.open('https://wa.me/56956190853?text='+encodeURIComponent(msg),'_blank')}}
 renderSlots();
 </script>
 </body>
