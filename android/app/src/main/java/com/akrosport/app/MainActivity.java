@@ -1,11 +1,25 @@
 package com.akrosport.app;
 
+import android.webkit.WebView;
+import android.webkit.WebSettings;
+import android.webkit.WebViewClient;
 import android.os.Bundle;
-import com.getcapacitor.BridgeActivity;
+import android.app.Activity;
 
-public class MainActivity extends BridgeActivity {
+public class MainActivity extends Activity {
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        WebView webView = new WebView(this);
+        setContentView(webView);
+        
+        WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
+        settings.setAllowFileAccess(true);
+        
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("file:///android_asset/index.html");
     }
 }
